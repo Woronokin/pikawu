@@ -1,6 +1,6 @@
 # pikawu (pikadu или копия Pikabu)
 
-### Учебный проект по материалам Glo Academy >>> [Смотреть макет](https://woronokin.github.io/pikawu) 
+### Учебный проект по материалам Glo Academy >>> [Смотреть сайт](https://woronokin.github.io/pikawu) 
 
 --- 
 
