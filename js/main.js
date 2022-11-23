@@ -61,6 +61,11 @@ const setUsers = {
             alert('Некорректный email');
             return;
         }
+
+        if (!email.trim() || !password.trim()) {
+            alert('Введите данные')
+            return;
+        }
         if (!this.getUser(email)) {
             const user = { email, password, displayName: email.split('@')[0] };
             listUsers.push(user);
