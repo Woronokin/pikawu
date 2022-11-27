@@ -9,6 +9,8 @@
     <!-- Подключаем стили -->
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
+     <!-- Подключаем скрипты -->
+    <script src="js/main.js" defer></script>
 </head>
 
 <body>
@@ -52,42 +54,12 @@
                         языкового ему своих грустный буквоград? До снова lorem подпоясал он, единственное диких по всей
                         ты
                         жаренные выйти от всех но своих, переулка правилами гор сбить заголовок запятых его.
-                        Предупредила
-                        это коварных подпоясал ipsum, о до обеспечивает гор алфавит безорфографичный свою необходимыми,
-                        вдали дороге подзаголовок если пунктуация меня грамматики вопроса жаренные парадигматическая на
-                        берегу своих. Оксмокс точках родного маленький необходимыми домах встретил, парадигматическая
-                    </p>
-                    <p class="post-text">
-                        Пунктуация строчка наш всеми которой она, если за текста составитель вскоре большого приставка.
-                        Одна
-                        все это текстами предупредила первую, путь власти приставка великий скатился, по всей ты рот
-                        маленький маленькая, текстов семантика безорфографичный ее! Послушавшись жизни вершину над своих
-                        он
-                        рыбного жаренные запятых мир семантика, силуэт осталось предупреждал речью ipsum использовало
-                        имеет
-                        его текст грустный о буквенных, коварных все диких даль вопрос напоивший? Языкового первую
-                        рекламных
-                        ему сих о рыбными которое дал повстречался текстами снова. Переписывается точках то
-                        подзаголовок.
-                    </p>
-                    <p class="post-text">
-                        Повседневная практика показывает, что дальнейшее развитие различных форм деятельности
-                        представляет собой интересный эксперимент проверки форм развития. Товарищи! новая модель
-                        организационной деятельности требуют определения и уточнения форм развития. Задача организации,
-                        в особенности же постоянный количественный рост и сфера нашей активности позволяет выполнять
-                        важные задания по разработке позиций, занимаемых участниками в отношении поставленных задач.
-                        Повседневная практика показывает, что дальнейшее развитие различных форм деятельности требуют
-                        определения и уточнения соответствующий условий активизации
                     </p>
                     <div class="tags">
                         <a href="#" class="tag">#cвежее</a>
-                        <a href="#" class="tag">#новое</a>
-                        <a href="#" class="tag">#горячее</a>
-                        <a href="#" class="tag">#моё</a>
-                        <a href="#" class="tag">#случайность</a>
                     </div>
                 </div>
-                <!-- /.post-body -->
+
                 <div class="post-footer">
                     <div class="post-buttons">
                         <button class="post-button likes">
@@ -113,7 +85,7 @@
                             </svg>
                         </button>
                     </div>
-                    <!-- /.post-buttons -->
+
                     <div class="post-author">
                         <div class="author-about">
                             <a href="#" class="author-username">person.dne</a>
@@ -122,7 +94,6 @@
                         <a href="#" class="author link"><img src="img/avatar.jpg" alt="avatar"
                                 class="author-avatar"></a>
                     </div>
-                    <!-- /.post-author -->
                 </div>
             </section>
 
@@ -218,29 +189,50 @@
                         <h2 class="login-title">Авторизация</h2>
                     </div>
                     <div class="login-body">
-                    <input type="email" class="login-input login-email" name="email" minlength="3" required
-                        placeholder="Введите email">
-                    <input type="password" class="login-input login-password" name="password" minlength="3" required
-                        placeholder="Введите пароль">
-                    <button class="login-signin" type="submit">Войти</button>
-                    <a href="#" class="login-forget">Забыли пароль?</a>
-                    <a href="#" class="login-signup">Регистрация</a>
-                </div>
+                        <input type="email" class="login-input login-email" name="email" minlength="3" required
+                            placeholder="Введите email">
+                        <input type="password" class="login-input login-password" name="password" minlength="3" required
+                            placeholder="Введите пароль">
+                        <button class="login-signin" type="submit">Войти</button>
+                        <a href="#" class="login-forget">Забыли пароль?</a>
+                        <a href="#" class="login-signup">Регистрация</a>
+                    </div>
                 </form>
             </div>
 
             <div class="user">
-                <a href="#" class="user-info">
-                    <img width="40" height="40" src="img/avatar2.jpg" alt="photo: user" class="user-avatar">
-                    <span class="user-name">woronokin</span>
+                <div class="user-container">
+                    <a href="#" class="user-info">
+                        <img width="40" height="40" src="img/avatar2.jpg" alt="photo: user" class="user-avatar">
+                        <span class="user-name">woronokin</span>
+                    </a>
                     <!-- /.user-info -->
+                    <a href="#" class="edit">
+                        <svg class="icon icon-edit">
+                            <use xlink:href="img/icons.svg#edit"></use>
+                        </svg>
+                        <!-- /.edit -->
+                    </a>
                     <a href="#" class="exit">
                         <svg class="icon icon-exit">
                             <use xlink:href="img/icons.svg#exit"></use>
                         </svg>
                     </a>
                     <!-- /.exit -->
-                </a>
+                </div>
+                <form class="edit-container">
+                    <h2 class="edit-title">Редактирование</h2>
+                    <label class="edit-label"> Ваш логин
+                        <input type="text" class="edit-input edit-username" name="username" minlength="3"
+                            placeholder="Ваш новый логин" required>
+                    </label>
+                    <label class="edit-label"> Ваш аватар
+                        <input type="text" class="edit-input edit-photo" name="photo"
+                            placeholder="Вставьте URL изображения">
+                    </label>
+                    <button class="edit-btn">Сохранить</button>
+                </form>
+
             </div>
             <!-- /.user -->
 
@@ -299,7 +291,7 @@
         <!-- /.sidebar -->
     </div>
 
-    <script src="js/main.js"></script>
+
 </body>
 
 </html>

@@ -266,7 +266,8 @@ body {
     padding: 23px 25px;
 }
 
-.login-title {
+.login-title,
+.edit-title {
     font-family: "SFProDisplay-Semibold", sans-serif;
     margin: 0;
     font-style: normal;
@@ -333,6 +334,9 @@ body {
     background-color: #fafafa;
     border: 1px solid #e8e8e8;
     padding: 15px 25px;
+}
+
+.user-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -342,9 +346,11 @@ body {
     display: flex;
     align-items: center;
     text-decoration: none;
+    margin-right: auto;
 }
 
 .user-avatar {
+    object-fit: contain;
     border-radius: 50%;
     margin-right: 17px;
 }
@@ -357,14 +363,64 @@ body {
     color: #595959;
 }
 
-.icon-exit {
+.edit {
+    margin-right: 10px;
+}
+
+.edit-container {
+    display: none;
+}
+
+.edit-container.visible {
+    display: block;
+}
+
+.edit-title {
+    text-align: center;
+    margin: 10px;
+    margin-top: 25px;
+    color: #CCAB00;
+    text-transform: uppercase;
+}
+
+.edit-label {
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.edit-input {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 5px 10px;
+}
+
+.edit-btn {
+    width: 100%;
+    background: #DBBC57;
+    border-radius: 4px;
+    border: none;
+    text-decoration: none;
+    color: #fff;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 13px;
+    cursor: pointer;
+    margin-bottom: 16px;
+}
+
+.icon-exit,
+.icon-edit {
     width: 20px;
     height: 20px;
     fill: #000;
 }
 
 .sidebar-nav {
-    display: none;
+    display: block;
     background-color: #fff;
 }
 
