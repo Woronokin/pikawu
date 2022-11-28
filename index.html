@@ -9,7 +9,8 @@
     <!-- Подключаем стили -->
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
-     <!-- Подключаем скрипты -->
+    <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
+    <!-- Подключаем скрипты -->
     <script src="js/main.js" defer></script>
 </head>
 
@@ -181,6 +182,20 @@
             </section>
         </main>
         <!-- /.posts -->
+        <form action="#" class="add-post">
+            <input type="text" name="title" class="add-title" placeholder="Заголовок поста">
+            <textarea name="text" class="add-text" placeholder="Текст вашего поста"></textarea>
+            <input type="text" name="tags" class="add-tags" placeholder="Добавьте теги через запятую">
+            <div class="add-buttons">
+                <button type="submit" class="button add-button">
+                    <svg class="icon icon-fire">
+                        <use xlink:href="img/icons.svg#fire"></use>
+                    </svg>
+                    Опубликовать пост
+                </button>
+            </div>
+        </form>
+
         <aside class="sidebar">
 
             <div class="login">
@@ -203,7 +218,7 @@
             <div class="user">
                 <div class="user-container">
                     <a href="#" class="user-info">
-                        <img width="40" height="40" src="img/avatar2.jpg" alt="photo: user" class="user-avatar">
+                        <img width="40" height="40" src="img/avatar.jpg" alt="photo: user" class="user-avatar">
                         <span class="user-name">woronokin</span>
                     </a>
                     <!-- /.user-info -->

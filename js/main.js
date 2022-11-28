@@ -1,42 +1,42 @@
+
 // объявлем переменную кнопки меню
 let menuToggle = document.querySelector('#menu-toggle');
 // объявлем переменную меню
 let menu = document.querySelector('.sidebar');
 
 const regExpValidEmail = /^\w+@\w+\.\w{2,}$/;
-
 const loginElem = document.querySelector('.login');
 const loginForm = document.querySelector('.login-form');
 const emailInput = document.querySelector('.login-email');
 const passwordInput = document.querySelector('.login-password');
 const loginSignup = document.querySelector('.login-signup');
-
 const userElem = document.querySelector('.user');
 const userNameElem = document.querySelector('.user-name');
 const sidebarNav = document.querySelector('.sidebar-nav');
-
 const exitElem = document.querySelector('.exit');
 const editElem = document.querySelector('.edit');
 const editContainer = document.querySelector('.edit-container');
-
 const editUsername = document.querySelector('.edit-username');
 const editPhotoURL = document.querySelector('.edit-photo');
 const userAvatarElem = document.querySelector('.user-avatar');
-
 const postsWrapper = document.querySelector('.posts');
+const buttonNewPost = document.querySelector('.button-new-post');
+const addPostElem = document.querySelector('.add-post');
 
 const listUsers = [{
         id: '01',
         email: 'woronokin@mail.com',
         password: '12345',
-        displayName: 'Woronokin'
+        displayName: 'Woronokin',
+        photo: 'https://nikonorow.ru/wp-content/uploads/2021/01/logo-2.0.png'
     },
 
     {
         id: '02',
         email: 'maks117@test.ru',
         password: '123456',
-        displayName: 'maksim'
+        displayName: 'maksim',
+        photo: 'https://woronokin.github.io/pikawu/img/avatar.jpg'
     },
 
 ];
@@ -106,7 +106,7 @@ const setPosts = {
             title: 'Заголовок поста',
             text: 'Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Первую языкового ему своих грустный буквоград? До снова lorem подпоясал он, единственное диких по всей ты жаренные выйти от всех но своих, переулка правилами гор сбить заголовок запятых его. Предупредила это коварных подпоясал ipsum, о до обеспечивает гор алфавит безорфографичный свою необходимыми, вдали дороге подзаголовок если пунктуация меня грамматики вопроса жаренные парадигматическая на берегу своих. Оксмокс точках родного маленький необходимыми домах встретил, парадигматическа',
             tags: ['cвежее', 'новое', 'горячее', 'моё', 'случайность'],
-            author: 'woronokin@mail.com',
+            author: {displayName: 'woronokin', photo: 'https://nikonorow.ru/wp-content/uploads/2021/01/logo-2.0.png'},
             date: '27.11.22, 16:24:00',
             likes: 15,
             comments: 20
@@ -115,7 +115,7 @@ const setPosts = {
             title: 'Заголовок второго поста',
             text: 'Пунктуация строчка наш всеми которой она, если за текста составитель вскоре большого приставка. Одна все это текстами предупредила первую, путь власти приставка великий скатился, по всей ты рот маленький маленькая, текстов семантика безорфографичный ее! Послушавшись жизни вершину над своих он',
             tags: ['cвежее', 'новое', 'горячее', 'моё', 'случайность'],
-            author: 'maks117@test.ru',
+            author: {displayName: 'maks74', photo: 'https://woronokin.github.io/pikawu/img/avatar.jpg'},
             date: '27.11.22, 16:27:00',
             likes: 47,
             comments: 13
@@ -124,12 +124,31 @@ const setPosts = {
             title: 'Заголовок поста 3',
             text: ' это коварных подпоясал ipsum, о до обеспечивает гор алфавит безорфографичный свою необходимыми, вдали дороге подзаголовок если пунктуация меня грамматики вопроса жаренные парадигматическая на берегу своих. Оксмокс точках родного маленький необходимыми домах встретил, парадигматическая',
             tags: ['cвежее', 'новое', 'горячее', 'моё', 'случайность'],
-            author: 'woronokin@mail.com',
-            date: '27.11.22, 16:24:00',
+            author: {displayName: 'woronokin', photo: 'https://nikonorow.ru/wp-content/uploads/2021/01/logo-2.0.png'},
+            date: '27.11.22, 17:37:00',
             likes: 17,
             comments: 25
         }
-    ]
+    ],
+    addPost(title, text, tags, handler) {
+
+        this.allPosts.unshift({
+            title,
+            text,
+            tags: tags.split(',').map(item => item.trim()),
+            author: {
+                displayName: setUsers.user.displayName,
+                photo: setUsers.user.photo,
+            },
+            date: new Date().toLocaleString(),
+            likes: 0,
+            comments: 0,
+        });
+
+        if(handler) {
+            handler();
+        }
+    }
 };
 
 const toggleAuthDom = () => {
@@ -142,27 +161,37 @@ const toggleAuthDom = () => {
         sidebarNav.style.display = '';
         userNameElem.textContent = user.displayName;
         userAvatarElem.src = user.photo || userAvatarElem.src;
+        buttonNewPost.classList.add('visible');
     } else {
         loginElem.style.display = '';
         userElem.style.display = 'none';
         sidebarNav.style.display = 'none';
+        buttonNewPost.classList.remove('visible');
+        addPostElem.classList.remove('visible');
+        postsWrapper.classList.add('visible');
     }
 };
 
+const showAddPost = () => {
+    addPostElem.classList.add('visible');
+    postsWrapper.classList.remove('visible');
+};
+
 const showAllPosts = () => {
+
     let postsHTML = '';
 
-    setPosts.allPosts.forEach(post => {
+    setPosts.allPosts.forEach(({title, text, date, tags, likes, comments, author}) => {
 
         postsHTML += `
         <section class="post">
         <div class="post-body">
-            <h2 class="post-title">${post.title}</h2>
+            <h2 class="post-title">${title}</h2>
             <p class="post-text">
-            ${post.text}
+            ${text}
             </p>
             <div class="tags">
-                <a href="#" class="tag">${post.tags}</a>
+               ${tags.map(tag => `<a href="#${tag}" class="tag">#${tag}</a>`)}
             </div>
         </div>
 
@@ -172,13 +201,13 @@ const showAllPosts = () => {
                     <svg width="24" height="24" class="icon icon-like">
                         <use xlink:href="img/icons.svg#like"></use>
                     </svg>
-                    <span class="likes-counter">${post.likes}</span>
+                    <span class="likes-counter">${likes}</span>
                 </button>
                 <button class="post-button comments">
                     <svg width="21" height="21" class="icon icon-comment">
                         <use xlink:href="img/icons.svg#comment"></use>
                     </svg>
-                    <span class="comments-counter">${post.comments}</span>
+                    <span class="comments-counter">${comments}</span>
                 </button>
                 <button class="post-button save">
                     <svg width="19" height="19" class="icon icon-save">
@@ -194,10 +223,10 @@ const showAllPosts = () => {
 
             <div class="post-author">
                 <div class="author-about">
-                    <a href="#" class="author-username">${post.author}</a>
-                    <span class="post-time">${post.date}</span>
+                    <a href="#" class="author-username">${author.displayName}</a>
+                    <span class="post-time">${date}</span>
                 </div>
-                <a href="#" class="author link"><img src="img/avatar.jpg" alt="avatar"
+                <a href="#" class="author link"><img src=${author.photo || "img/avatar.jpg"} alt="avatar"
                         class="author-avatar"></a>
             </div>
         </div>
@@ -205,7 +234,10 @@ const showAllPosts = () => {
         `;
     });
 
-    postsWrapper.innerHTML = postsHTML
+    postsWrapper.innerHTML = postsHTML;
+    
+    addPostElem.classList.remove('visible');
+    postsWrapper.classList.add('visible');
 };
 
 const init = () => {
@@ -251,6 +283,31 @@ const init = () => {
         event.preventDefault();
         // вешаем класс на меню при клике по кнопке
         menu.classList.toggle('visible')
+    });
+
+    buttonNewPost.addEventListener('click', event => {
+        event.preventDefault();
+        showAddPost();
+    });
+
+    addPostElem.addEventListener('submit', event => {
+        event.preventDefault();
+        const { title, text, tags } = addPostElem.elements;
+
+        if (title.value.length < 7) {
+            alert('Слишком короткий заголовок');
+            return;
+        }
+
+        if (text.value.length < 30) {
+            alert('Слишком короткий текст поста');
+            return;
+        }
+
+        setPosts.addPost(title.value, text.value, tags.value, showAllPosts);
+
+        addPostElem.classList.remove('visible');
+        addPostElem.reset();
     });
 
     showAllPosts();
