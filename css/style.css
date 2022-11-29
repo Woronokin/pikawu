@@ -170,6 +170,11 @@ body {
     font-weight: 400;
     font-size: 14px;
     line-height: 22px;
+    max-width: 100%;
+}
+
+.post-text iframe {
+    max-width: 100%;
 }
 
 .tags {
