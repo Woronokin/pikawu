@@ -1,6 +1,6 @@
 # pikawu (pikadu или копия Pikabu)
 
-### Смотреть проект в действии >>> [ссылка](https://woronokin.github.io/pikawu) 
+### Смотреть проэкт в действии >>> [ссылка](https://woronokin.github.io/pikawu) 
 
 --- 
 
